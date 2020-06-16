@@ -5,7 +5,7 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
 const slash = require('slash');
 
-const {app, BrowserWindow, Menu, ipcMain} = require('electron')
+const {app, BrowserWindow, Menu, ipcMain, shell} = require('electron')
 
 // SET ENVIROMENT
 process.env.NODE_ENV = 'development'
@@ -63,8 +63,36 @@ function createAboutWindow() {
 
 
 ipcMain.on('image:minimize', (event, options) => {
-    console.log(options)
+    options.dest = path.join(os.homedir(), 'imageshrink')
+    shrinkImage(options)
 })
+
+
+async function shrinkImage({ imgPath, quality, dest }) {
+    try{
+
+        const pngQuality = quality / 100
+
+        const files = await imagemin([slash(imgPath)], {
+            destination: dest,
+            plugins: [
+                imageminMozjpeg({ quality }), 
+                imageminPngquant({ quality: [pngQuality, pngQuality] })
+            ]
+        })
+
+        
+        console.log(files)
+        // open a folder
+        shell.openPath(dest)
+
+
+    }catch(err){
+        console.log(err)
+    }
+
+    
+}
 
 
 
