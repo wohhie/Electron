@@ -15,12 +15,19 @@ function createMainWindow() {
     // Screen Size Information
     mainWindow = new BrowserWindow({
         title: "Image Shrink",
-        width: 500,
+        width: isDev ? 1000 : 500,
         height: 600,
         icon: './assets/icons/Icon_256x256.png',
         resizable: isDev,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        webPreferences: {
+            nodeIntegration: true
+        }
     })
+
+    if(isDev){
+        mainWindow.webContents.openDevTools()
+    }
 
     // load the path main application
     // mainWindow.loadURL(`file://${__dirname}/app/index.html`)
