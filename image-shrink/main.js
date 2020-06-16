@@ -4,11 +4,12 @@ const imagemin = require('imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
 const slash = require('slash');
+const log = require('electron-log')
 
 const {app, BrowserWindow, Menu, ipcMain, shell} = require('electron')
 
 // SET ENVIROMENT
-process.env.NODE_ENV = 'development'
+process.env.NODE_ENV = 'production'
 // check its production or in development
 const isDev = process.env.NODE_ENV !== 'production' ? true : false
 const isMac = process.platform === 'darwin' ? true : false
@@ -24,7 +25,7 @@ function createMainWindow() {
         title: "Image Shrink",
         width: isDev ? 1000 : 500,
         height: 600,
-        icon: './assets/icons/Icon_256x256.png',
+        icon:  path.join(__dirname, 'assets', 'icons', 'Icon_256x256.png'),
         resizable: isDev,
         backgroundColor: 'white',
         webPreferences: {
@@ -50,7 +51,7 @@ function createAboutWindow() {
         title: "About Image Shrink",
         width: 300,
         height: 300,
-        icon: './assets/icons/Icon_256x256.png',
+        icon: path.join(__dirname, 'assets', 'icons', 'Icon_256x256.png'),
         resizable: false,
         backgroundColor: 'white'
     })
@@ -82,13 +83,14 @@ async function shrinkImage({ imgPath, quality, dest }) {
         })
 
         
-        console.log(files)
+        log.info(files)
         // open a folder
         shell.openPath(dest)
+        mainWindow.webContents.send('image:done')
 
 
     }catch(err){
-        console.log(err)
+        log.error(error)
     }
 
     
