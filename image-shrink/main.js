@@ -1,4 +1,11 @@
-const {app, BrowserWindow, Menu, globalShortcut} = require('electron')
+const os = require('os')
+const path = require('path')
+const imagemin = require('imagemin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
+const slash = require('slash');
+
+const {app, BrowserWindow, Menu, ipcMain} = require('electron')
 
 // SET ENVIROMENT
 process.env.NODE_ENV = 'development'
@@ -35,6 +42,7 @@ function createMainWindow() {
 }
 
 
+
 function createAboutWindow() {
     
     // Screen Size Information
@@ -50,9 +58,15 @@ function createAboutWindow() {
     // load the path main application
     // mainWindow.loadURL(`file://${__dirname}/app/index.html`)
     aboutWindow.loadFile('./app/about.html')
-
-
 }
+
+
+
+ipcMain.on('image:minimize', (event, options) => {
+    console.log(options)
+})
+
+
 
 
 // CREATING MENU
