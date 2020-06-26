@@ -9,18 +9,29 @@ const isMac = process.platform === 'darwin' ? true : false
 
 let mainWindow
 
+
 function createMainWindow() {
   mainWindow = new BrowserWindow({
-    title: 'APP NAME',
-    width: isDev ? 800 : 500,
-    height: 600,
+    title: 'SysTop',
+    width: isDev ? 800 : 355,
+    height: 500,
     icon: './assets/icons/icon.png',
     resizable: isDev ? true : false,
-    backgroundColor: 'white',
     webPreferences: {
       nodeIntegration: true,
     },
   })
+
+
+
+
+
+
+
+
+
+
+
 
   if (isDev) {
     mainWindow.webContents.openDevTools()
@@ -55,6 +66,7 @@ const menu = [
       ]
     : []),
 ]
+
 
 app.on('window-all-closed', () => {
   if (!isMac) {
