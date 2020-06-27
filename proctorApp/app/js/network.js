@@ -64,3 +64,10 @@ network.get_active_interface(function(err, obj) {
     */
 
   })
+
+
+
+  // Send Notification
+  function notifyUser(options){
+      new Notification(options.title, options)
+  }
