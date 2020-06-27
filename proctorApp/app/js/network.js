@@ -63,7 +63,4 @@ network.get_active_interface(function(err, obj) {
    
     */
 
-    
-
-
   })
