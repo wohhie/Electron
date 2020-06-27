@@ -3,4 +3,5 @@ application-dev-v2.(custom-menu)/node_modules
 image-shrink/node_modules
 image-shrink/release-builds
 proctorApp/node_modules
+BugLogger/node_modules
 .vscode
