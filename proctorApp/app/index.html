@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>Student Application</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    
+    <nav id="nav">
+        <ul>
+            <li>
+                <i class="fas fa-microchip"></i>
+                <p>CPU</p>
+            </li>
+            <li>
+                <i class="fas fa-info"></i>
+                <p>Network Information</p>
+            </li>
+            <li>
+                <i class="fas fa-cog"></i>
+                <p>Settings</p>
+            </li>
+        </ul>
+    </nav>
+
+    
+    
+    <main>
+        <div id="cpu-info" class="content">
+            <h1><i class="fas fa-microchip"></i> Login</h1>
+            <form class="login-form">
+                <div class="form-group">
+                  <label for="email">MUN Email Address</label>
+                  <input type="email" placeholder="Enter Email Address" aria-describedby="emailHelp">
+                  
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" name="password" placeholder="Enter Password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-right">Login</button>
+              </form>
+            
+        </div>
+        <div class="content show">
+            <h1><i class="fas fa-info"></i> Network Information</h1>
+            <ul>
+                <li><strong>Computer Name: </strong><span id="comp-name"></span></li>
+                <li><strong>OS: </strong><span id="os"></span></li>
+                <li><strong>Public IP Address: </strong><span id="public-ip"></span></li>
+                <li><strong>Private IP Address: </strong><span id="private-ip"></span></li>
+                <li><strong>Gateway IP Address: </strong><span id="getway-ip"></span></li>
+                <li><strong>Active Interface: <span id="active-inteface"></span></strong></li>
+            </ul>
+
+
+        </div>
+        <div class="content">
+            <h1><i class="fas fa-cog"></i> Settings</h1>
+            <div id="alert" class="hide"></div>
+        </div>
+        
+    </main>
+
+
+    
+     <script src="js/tabs.js"></script>
+    <script src="js/Network.js"></script>
+</body>
+</html>

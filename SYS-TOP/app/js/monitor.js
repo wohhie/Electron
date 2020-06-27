@@ -19,7 +19,7 @@ setInterval(() => {
         // Make progressbar 'red' if overloads
         if(info >= cpuOverload){
             document.getElementById('cpu-progress').style.background = 'red'
-        }else{
+        }else{T
             document.getElementById('cpu-progress').style.background = '#30c88b'
         }
     })
