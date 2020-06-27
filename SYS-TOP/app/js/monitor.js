@@ -4,7 +4,7 @@ const cpu = osu.cpu
 const mem = osu.mem
 const os = osu.os
 
-let cpuOverload = 5     // 80%
+let cpuOverload = 80     // 80%
 let alertFrequency = 5  // 5 minutes
 
 
