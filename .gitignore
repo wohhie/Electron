@@ -4,4 +4,5 @@ image-shrink/node_modules
 image-shrink/release-builds
 proctorApp/node_modules
 BugLogger/node_modules
+/node_modules
 .vscode
