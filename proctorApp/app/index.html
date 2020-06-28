@@ -33,12 +33,12 @@
     
     
     <main>
-        <div id="cpu-info" class="content">
+        <div id="cpu-info" class="content show">
             <h1><i class="fas fa-microchip"></i> Login</h1>
-            <form class="login-form">
+            <form method="post" action="" class="form">
                 <div class="form-group">
                   <label for="email">MUN Email Address</label>
-                  <input type="email" placeholder="Enter Email Address" aria-describedby="emailHelp">
+                  <input type="email" placeholder="Enter Email Address">
                   
                 </div>
                 <div class="form-group">
@@ -47,10 +47,10 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary btn-right">Login</button>
-              </form>
-            
+            </form>
+
         </div>
-        <div class="content show">
+        <div class="content">
             <h1><i class="fas fa-info"></i> Network Information</h1>
             <ul>
                 <li><strong>Computer Name: </strong><span id="comp-name"></span></li>

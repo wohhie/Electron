@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
 
-const AddLogItem = ({ addItem }) => {
+function AddLogItem({ addItem }) {
     const [text, setText] = useState('')
     const [user, setUser] = useState('')
     const [priority, setPriority] = useState('')

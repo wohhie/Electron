@@ -113,16 +113,16 @@ nav ul li p {
 	border: orange 1px solid;
 }
 
-.form-control {
+/* .form-control {
 	margin: 15px 0;
-}
+} */
 
 
-.form-control input,
+/* .form-control input,
 .form-control select {
 	width: 100%;
 	padding: 4px;
-}
+} */
 
 .btn {
 	cursor: pointer;
