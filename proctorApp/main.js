@@ -1,4 +1,5 @@
-const {app, BrowserWindow, Menu, globalShortcut} = require('electron')
+const {app, BrowserWindow, Menu, globalShortcut, ipcMain} = require('electron')
+const path = require('path');
 
 // SET ENVIROMENT
 process.env.NODE_ENV = 'development'
@@ -7,15 +8,18 @@ const isDev = process.env.NODE_ENV !== 'production' ? true : false
 const isMac = process.platform === 'darwin' ? true : false
 const isWin = process.platform === 'win32'  ? true : false
 
+let appWidth = 450
+let appHeight = 600
 let mainWindow
+let networkWindow
 
 function createMainWindow() {
     
     // Screen Size Information
     mainWindow = new BrowserWindow({
         title: "Image Shrink",
-        width: 400,
-        height: 600,
+        width: appWidth,
+        height: appHeight,
         icon: './assets/icons/Icon_256x256.png',
         resizable: isDev,
         backgroundColor: 'white',
@@ -30,6 +34,34 @@ function createMainWindow() {
 
 
 }
+
+
+
+ipcMain.on('image:minimize', (event, options) => {
+    createNetworkWindow();
+})
+
+
+function createNetworkWindow() {
+    
+    // Screen Size Information
+    networkWindow = new BrowserWindow({
+        title: "About Image Shrink",
+        width: appWidth,
+        height: appHeight,
+        icon: path.join(__dirname, 'assets', 'icons', 'Icon_256x256.png'),
+        resizable: true,
+        backgroundColor: 'white',
+        webPreferences: {
+            nodeIntegration: true,
+        },
+    })
+
+    // load the path main application
+    // mainWindow.loadURL(`file://${__dirname}/app/index.html`)
+    networkWindow.loadFile('./app/network.html')
+}
+
 
 // CREATING MENU
 const menu = [
@@ -79,6 +111,7 @@ app.on('window-all-closed', () => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) {
       createMainWindow()
+      createNetworkWindow()
     }
   })
 
@@ -95,8 +128,15 @@ app.on('ready', () => {
     Menu.setApplicationMenu(mainMenu)
 
 
-    globalShortcut.register('CmdOrCtrl+R', () => mainWindow.reload())
-    globalShortcut.register(isMac ? 'Command+Alt+I' : 'Ctrl+Shift+I', () => mainWindow.toggleDevTools())
+    globalShortcut.register('CmdOrCtrl+R', () => {
+        mainWindow.reload()
+    })
+    globalShortcut.register(isMac ? 'Command+Alt+I' : 'Ctrl+Shift+I', () => {
+        mainWindow.toggleDevTools()
+        networkWindow.toggleDevTools()
+    })
 
     mainWindow.on('closed', () => mainWindow = null)
 })
+
+
