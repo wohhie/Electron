@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <title>About ImageShrink</title>
+</head>
+<body>
+    
+    <div class="container about center-align">
+        <table class="table table-strip table-hover">
+            <thead>
+                <tr>
+                    <th>Information</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Computer Name</strong></td>
+                    <td><span id="comp-name"></span></td>
+                </tr>
+
+                <tr>
+                    <td><strong>OS</strong></td>
+                    <td><span id="os"></span></td>
+                </tr>
+
+
+                <tr>
+                    <td><strong>Public IP Address</strong></td>
+                    <td><span id="public-ip"></span></td>
+                </tr>
+
+
+                <tr>
+                    <td><strong>Private IP Address</strong></td>
+                    <td><span id="private-ip"></span></td>
+                </tr>
+
+                <tr>
+                    <td><strong>Gateway IP Address</strong></td>
+                    <td><span id="getway-ip"></span></td>
+                </tr>
+
+                <tr>
+                    <td><strong>Active Interface</strong></td>
+                    <td><span id="active-interface"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="./js/network.js"></script>
+    <script>
+        console.log(document.getElementById('active-interface').innerHTML)
+    </script>
+</body>
+</html>
