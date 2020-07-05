@@ -1,5 +1,6 @@
 const {app, BrowserWindow, Menu, globalShortcut, ipcMain} = require('electron')
 const path = require('path');
+const { electron } = require('process');
 
 // SET ENVIROMENT
 process.env.NODE_ENV = 'development'
@@ -37,8 +38,11 @@ function createMainWindow() {
 
 
 
-ipcMain.on('image:minimize', (event, options) => {
+ipcMain.on('network:create', (event, options) => {
+    // Close current window 
     createNetworkWindow();
+    // mainWindow.close();
+
 })
 
 
@@ -124,17 +128,17 @@ app.on('window-all-closed', () => {
 
 app.on('ready', () => {
     createMainWindow()
-    const mainMenu = Menu.buildFromTemplate(menu)
-    Menu.setApplicationMenu(mainMenu)
+    // const mainMenu = Menu.buildFromTemplate(menu)
+    // Menu.setApplicationMenu(mainMenu)
 
 
-    globalShortcut.register('CmdOrCtrl+R', () => {
-        mainWindow.reload()
-    })
-    globalShortcut.register(isMac ? 'Command+Alt+I' : 'Ctrl+Shift+I', () => {
-        mainWindow.toggleDevTools()
-        networkWindow.toggleDevTools()
-    })
+    // globalShortcut.register('CmdOrCtrl+R', () => {
+    //     mainWindow.reload()
+    // })
+    // globalShortcut.register(isMac ? 'Command+Alt+I' : 'Ctrl+Shift+I', () => {
+    //     mainWindow.toggleDevTools()
+    //     mainWindow.toggleDevTools()
+    // })
 
     mainWindow.on('closed', () => mainWindow = null)
 })

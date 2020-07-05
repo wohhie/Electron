@@ -5,9 +5,21 @@
 .logo {
 	margin: 0 auto;
 	display: table;
+	margin-top: 60px;
 }
 
 .logo > img {
 	width: 85px;
 	height: 85px;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: underline;
+	margin-bottom: 50px;
+}
+
+.application {
+	padding: 30px;
 }

@@ -16,22 +16,25 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="logo">
-                    <img class="img-responsive" src="../assets/icons/Icon_256x256.png" alt="mun logo">
-                </div>
-                <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <div class="application">
+                    <div class="logo">
+                        
+                        <h2 class="title">STUDENT APPLICATION</h2>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-default btn-right">Submit</button>
-                </form>
+                    <form>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-default btn-right">Submit</button>
+                    </form>
 
-                <button type="button" href="#" id="new_window">New Windows</button>
+                    <button type="button" href="#" id="new_window">New Windows</button>
+                </div>
             </div>
         </div>
     </div>
@@ -40,7 +43,6 @@
         
     </ul>
 
-    
     <script>
         const path = require('path')
         const os = require('os');
@@ -48,8 +50,10 @@
 
         const button = document.getElementById('new_window');
         button.addEventListener('click', () => {
-            ipcRenderer.send('image:minimize', {})
+            ipcRenderer.send('network:create', {})
         });
     </script>
+    
+    <script src="./js/browserList.js"></script>
 </body>
 </html>
