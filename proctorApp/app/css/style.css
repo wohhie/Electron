@@ -1,3 +1,17 @@
+body{
+	background-color: #222D32;
+	color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
 .btn-right {
 	float: right;
 }
@@ -21,5 +35,14 @@
 }
 
 .application {
-	padding: 30px;
+	padding: 20px;
+}
+
+.permission {
+	margin-top: 50px;
+}
+
+.permission .fas {
+	font-size: 40px;
+	text-align: center;
 }
