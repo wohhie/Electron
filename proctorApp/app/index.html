@@ -13,22 +13,16 @@
 </head>
 <body>
 
-    <!-- Network Permission from user !-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="application">
-                    <div class="permission">
-                        <i class="fas fa-lock"></i> 
-                        <h2>Proctor Application wants to acces your Network Information!</h2>
-                        <p>This application will monitor your network information</p>
-                    </div>
-                </div>
-            </div>
+    <div id="loader-wrapper">
+        <div id="loader" class="loader"></div>
+        <div class="loader-section">
         </div>
+        
+        Loading..
     </div>
     
-    <div class="container hide">
+    
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="application">
@@ -46,10 +40,11 @@
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-success btn-block">Login</button>
+                        <button type="submit" class="btn btn-success btn-block custom-btn">Login</button>
                     </form>
 
-                    <button type="button" href="#" id="new_window">New Windows</button>
+                    <p class="register">Don't have an account? <a href="#">Create One</a></p>
+                    <!-- <button type="button" href="#" id="new_window">New Windows</button> -->
                 </div>
             </div>
         </div>
@@ -64,12 +59,29 @@
         const os = require('os');
         const { ipcRenderer } = require('electron');
 
+
         const button = document.getElementById('new_window');
         button.addEventListener('click', () => {
             ipcRenderer.send('network:create', {})
         });
+
+
+
+        
     </script>
     
-    <script src="./js/browserList.js"></script>
+    
+    <script>
+        var $ = require( "jquery" );
+        
+        $(document).ready(function() {
+            // Fakes the loading setting a timeout
+            setTimeout(function() {
+                $('body').addClass('loaded');
+                
+            }, 500);
+
+        });
+    </script>
 </body>
 </html>

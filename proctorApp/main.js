@@ -1,4 +1,5 @@
 const {app, BrowserWindow, Menu, globalShortcut, ipcMain} = require('electron')
+const remote = require('electron').remote;
 const path = require('path');
 const { electron } = require('process');
 
@@ -13,6 +14,7 @@ let appWidth = 450
 let appHeight = 600
 let mainWindow
 let networkWindow
+let permissionWindow
 
 function createMainWindow() {
     
@@ -38,6 +40,15 @@ function createMainWindow() {
 
 
 
+ipcMain.on('index:permission', (event, options) => {
+    // Close current window 
+    createMainWindow()
+    permissionWindow.close()
+    // mainWindow.close();
+
+})
+
+
 ipcMain.on('network:create', (event, options) => {
     // Close current window 
     createNetworkWindow();
@@ -46,6 +57,32 @@ ipcMain.on('network:create', (event, options) => {
 })
 
 
+//      PERMISSION WINDOW
+// ===============================================================
+function createPermissionWindow() {
+    
+    // Screen Size Information
+    permissionWindow = new BrowserWindow({
+        title: "Network Permission",
+        width: appWidth,
+        height: appHeight,
+        icon: path.join(__dirname, 'assets', 'icons', 'Icon_256x256.png'),
+        resizable: true,
+        backgroundColor: 'white',
+        webPreferences: {
+            nodeIntegration: true,
+        },
+    })
+
+
+    // load the path main application
+    // mainWindow.loadURL(`file://${__dirname}/app/index.html`)
+    permissionWindow.loadFile('./app/permission.html')
+}
+
+
+//      NETWORK WINDOW
+// ===============================================================
 function createNetworkWindow() {
     
     // Screen Size Information
@@ -127,7 +164,7 @@ app.on('window-all-closed', () => {
 
 
 app.on('ready', () => {
-    createMainWindow()
+    createPermissionWindow()
     // const mainMenu = Menu.buildFromTemplate(menu)
     // Menu.setApplicationMenu(mainMenu)
 
@@ -140,7 +177,7 @@ app.on('ready', () => {
     //     mainWindow.toggleDevTools()
     // })
 
-    mainWindow.on('closed', () => mainWindow = null)
+    permissionWindow.on('closed', () => permissionWindow = null)
 })
 
 
