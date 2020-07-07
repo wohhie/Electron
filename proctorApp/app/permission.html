@@ -10,25 +10,57 @@
     <link rel="stylesheet" href="css/style.css">
 
 
-    <title>About ImageShrink</title>
+    <title>User Permission</title>
 </head>
 <body>
     
     <!-- Network Permission from user !-->
-    <div class="container">
+    <div class="container" id="permission_block">
         <div class="row">
             <div class="col-sm-12">
-                <div class="permission">
-                    <h2><i class="fas fa-lock"></i> This Application will monitor your network interface!</h2>
+                <div class="application">
+                    <div class="permission">
+                        <div class="text-right">
+                            <i class="fas fa-lock"></i> 
+                            <h2>Proctor Application wants to acces your Network Information!</h2>
+                            <p>This application will monitor your network information</p>
+    
+                        </div>
+                        
+                        
+                        <div class="btn-right">
+                            <a href="#" class="btn btn-success" id="permission_yes">Yes</a>
+                            <a href="#" class="btn btn-danger" id="permission_no">No</a>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <script src="./js/network.js"></script>
     <script>
-        console.log(document.getElementById('active-interface').innerHTML)
+        const path = require('path')
+        const remote = require('electron').remote
+        const os = require('os');
+        const { ipcRenderer } = require('electron');
+
+        permission_no.addEventListener('click', () => {
+            let windowNo = remote.getCurrentWindow()
+            windowNo.close()
+        });
+
+
+
+        const permission_yes = document.getElementById('permission_yes');
+        permission_yes.addEventListener('click', () => {
+            
+
+            ipcRenderer.send('index:permission', {
+                'permission': 'yes',
+            })
+        });
+
     </script>
 </body>
 </html>
