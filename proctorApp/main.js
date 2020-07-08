@@ -2,6 +2,25 @@ const {app, BrowserWindow, Menu, globalShortcut, ipcMain} = require('electron')
 const remote = require('electron').remote;
 const path = require('path');
 const { electron } = require('process');
+const { options } = require('node-os-utils');
+const axios = require('axios')
+
+const Store = require('./Store')
+
+
+// Init Store and defaults
+const store = new Store({
+    configName: 'user-login',
+    defaults: {
+      login: {
+        fullname: '', 
+        email: '',
+        password: '',
+      }
+    }
+  })
+  
+
 
 // SET ENVIROMENT
 process.env.NODE_ENV = 'development'
@@ -39,10 +58,37 @@ function createMainWindow() {
 }
 
 
+ipcMain.on('login:check', (event, options) => {
+    // check permission 
+    console.log(options)
+    axios.post('http://localhost:8000/api/login/', {
+        email: options.email,
+        password: options.password
+    })
+    .then((res) => {
+        store.set('login', res.data.data)
+        createNetworkWindow()
+    })
+    .catch((error) => {
+        console.error(error)
+    })
+
+
+
+    // Move to the another page.
+})
+
+
 
 ipcMain.on('index:permission', (event, options) => {
     // Close current window 
-    createMainWindow()
+    console.log(store.get('login').fullname)
+    if(store.get('login').fullname === ''){
+        createMainWindow()
+    }else{
+        createNetworkWindow()
+    }
+    
     permissionWindow.close()
     // mainWindow.close();
 
@@ -176,6 +222,9 @@ app.on('ready', () => {
     //     mainWindow.toggleDevTools()
     //     mainWindow.toggleDevTools()
     // })
+
+   
+    
 
     permissionWindow.on('closed', () => permissionWindow = null)
 })
