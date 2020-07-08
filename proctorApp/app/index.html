@@ -31,14 +31,14 @@
                         <h2 class="title">STUDENT APPLICATION</h2>
                         
                     </div>
-                    <form>
+                    <form id="login-form">
                         <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                         </div>
                         <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-success btn-block custom-btn">Login</button>
                     </form>
@@ -60,11 +60,25 @@
         const { ipcRenderer } = require('electron');
 
 
-        const button = document.getElementById('new_window');
-        button.addEventListener('click', () => {
-            ipcRenderer.send('network:create', {})
-        });
 
+        // User Login with email and password 
+        // ================================================
+        const login = document.getElementById('login-form')
+        const form_email = document.getElementById('email')
+        const form_password = document.getElementById('password')
+
+        login.addEventListener('submit', event => {
+            event.preventDefault()
+
+            const email = form_email.value
+            const password = form_password.value
+
+            ipcRenderer.send('login:check', {
+                email,
+                password
+            })
+            
+        })
 
 
         

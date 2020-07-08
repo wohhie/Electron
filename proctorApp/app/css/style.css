@@ -21,7 +21,7 @@ label, p, a, .btn, h1, h2, h3, h4, h5, h6{
 
 .btn-right {
 	float: right;
-}
+}y
 
 .text-right{
 	text-align: right;
@@ -29,7 +29,6 @@ label, p, a, .btn, h1, h2, h3, h4, h5, h6{
 
 .logo {
 	margin: 0 auto;
-	display: table;
 	margin-top: 60px;
 }
 
