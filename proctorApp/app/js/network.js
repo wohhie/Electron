@@ -1,3 +1,4 @@
+const {app, BrowserWindow, Menu, globalShortcut, ipcMain} = require('electron')
 const path = require('path');
 const osu = require('node-os-utils');
 const network = require('network')
@@ -17,9 +18,6 @@ document.getElementById('comp-name').innerText = os.hostname()
 // OS
 const osType = os.type()
 console.log(osType)
-
-
-
 
 
 setTimeout(function(){ 

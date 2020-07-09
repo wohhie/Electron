@@ -58,6 +58,8 @@ function createMainWindow() {
 }
 
 
+
+
 ipcMain.on('login:check', (event, options) => {
     // check permission 
     console.log(options)
@@ -68,22 +70,36 @@ ipcMain.on('login:check', (event, options) => {
     .then((res) => {
         store.set('login', res.data.data)
         createNetworkWindow()
+        mainWindow.close()
+
     })
     .catch((error) => {
         console.error(error)
     })
-
-
 
     // Move to the another page.
 })
 
 
 
+ipcMain.on('logout:user', (event, options) => {
+    // check permission 
+    store.set('login', null)
+
+    if(store.get('login') === null){
+        createMainWindow()
+    }else{
+        createNetworkWindow()
+    }
+
+    networkWindow.close()
+})
+
+
+
 ipcMain.on('index:permission', (event, options) => {
     // Close current window 
-    console.log(store.get('login').fullname)
-    if(store.get('login').fullname === ''){
+    if(store.get('login') === null){
         createMainWindow()
     }else{
         createNetworkWindow()
