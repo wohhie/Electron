@@ -10,11 +10,31 @@
     <link rel="stylesheet" href="css/style.css">
 
 
-    <title>About ImageShrink</title>
+    <title>Home</title>
 </head>
 <body>
+
+
+    <!-- Nav tabs -->
+    <ul class="nav navbar nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+    </ul>
     
-    <div class="container about center-align">
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">h1</div>
+        <div role="tabpanel" class="tab-pane" id="profile">...</div>
+        <div role="tabpanel" class="tab-pane" id="messages">h4</div>
+        <div role="tabpanel" class="tab-pane" id="settings">h5</div>
+    </div>
+      
+    
+
+
+    <div class="container about center-align hide">
         <button type="button" class="btn btn-success btn-right" href="#" id="logout">Logout</button>
         <table class="table table-strip table-hover">
             <thead>
@@ -63,10 +83,16 @@
 
 
     
+    <script>let $ = require('jquery');</script>
+    <script>require('bootstrap');</script>
+    
     <script src="./js/network.js"></script>
     <script>
-        const { ipcRenderer } = require('electron');
         
+
+
+        const { ipcRenderer } = require('electron');
+
         const logout = document.getElementById('logout');
         logout.addEventListener('click', () => {
             

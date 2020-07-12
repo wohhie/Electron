@@ -54,10 +54,7 @@ function createMainWindow() {
     // mainWindow.loadURL(`file://${__dirname}/app/index.html`)
     mainWindow.loadFile('./app/index.html')
 
-
 }
-
-
 
 
 ipcMain.on('login:check', (event, options) => {
