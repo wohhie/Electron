@@ -10,93 +10,113 @@
     <link rel="stylesheet" href="css/style.css">
 
 
-    <title>About ImageShrink</title>
+    <title>Home</title>
 </head>
 <body>
     
-    <div class="container about center-align">
-        <div class="row hide">
-            <div class="col-xs-12 col-ms-12">
-                <h6 class="section-title h1">Tabs</h6>
-                <div class="row">
-                    <div class="col-xs-12 ">
-                        <nav>
-                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-                                <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">About</a>
-                            </div>
-                        </nav>
-                        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                               
-                            </div>
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                            </div>
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                            </div>
-                            <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                            </div>
-                        </div>
-                    
-                    </div>
-                </div>
+
+    
+    <!-- Nav tabs -->
+    <ul class="nav navbar nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Courses</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Network Information</a></li>
+        <li role="presentation"><a href="#" id="logout">Logout</a></li>
+    </ul>
+    
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">h1</div>
+        <div role="tabpanel" class="tab-pane" id="profile">...</div>
+        <div role="tabpanel" class="tab-pane" id="messages">h4</div>
+        <div role="tabpanel" class="tab-pane" id="settings">
+            <div class="container about center-align">
+                
+                <table class="table table-strip table-hover">
+                    <thead>
+                        <tr>
+                            <th>Network Information</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Computer Name</strong></td>
+                            <td><span id="comp-name"></span></td>
+                        </tr>
+        
+                        <tr>
+                            <td><strong>OS</strong></td>
+                            <td><span id="os"></span></td>
+                        </tr>
+        
+        
+                        <tr>
+                            <td><strong>Public IP Address</strong></td>
+                            <td><span id="public-ip"></span></td>
+                        </tr>
+        
+        
+                        <tr>
+                            <td><strong>Private IP Address</strong></td>
+                            <td><span id="private-ip"></span></td>
+                        </tr>
+
+                        
+                        <tr>
+                            <td><strong>VPN Assigned IP Address</strong></td>
+                            <td><span id="openvpn-ip"></span></td>
+                        </tr>
+        
+                        <tr>
+                            <td><strong>Gateway IP Address</strong></td>
+                            <td><span id="getway-ip"></span></td>
+                        </tr>
+        
+                        <tr>
+                            <td><strong>Active Interface</strong></td>
+                            <td><span id="active-interface"></span></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>MAC Address</strong></td>
+                            <td><span id="mac-address"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <table class="table table-strip table-hover">
-            <thead>
-                <tr>
-                    <th>Information</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Computer Name</strong></td>
-                    <td><span id="comp-name"></span></td>
-                </tr>
-
-                <tr>
-                    <td><strong>OS</strong></td>
-                    <td><span id="os"></span></td>
-                </tr>
-
-
-                <tr>
-                    <td><strong>Public IP Address</strong></td>
-                    <td><span id="public-ip"></span></td>
-                </tr>
-
-
-                <tr>
-                    <td><strong>Private IP Address</strong></td>
-                    <td><span id="private-ip"></span></td>
-                </tr>
-
-                <tr>
-                    <td><strong>Gateway IP Address</strong></td>
-                    <td><span id="getway-ip"></span></td>
-                </tr>
-
-                <tr>
-                    <td><strong>Active Interface</strong></td>
-                    <td><span id="active-interface"></span></td>
-                </tr>
-            </tbody>
-        </table>
     </div>
+      
+    
+
+
+    
 
 
 
 
     
+    <script>let $ = require('jquery');</script>
+    <script>require('bootstrap');</script>
+    
     <script src="./js/network.js"></script>
     <script>
-        console.log(document.getElementById('active-interface').innerHTML)
+        const { ipcRenderer } = require('electron');
+        
+        
+
+
+
+        // Loggout user
+        const logout = document.getElementById('logout');
+        logout.addEventListener('click', () => {
+            ipcRenderer.send('logout:user', {
+                'permission': 'yes',
+            })
+        });
+
+
     </script>
 </body>
 </html>

@@ -4,6 +4,7 @@ const path = require('path');
 const { electron } = require('process');
 const { options } = require('node-os-utils');
 const axios = require('axios')
+const network = require('network')
 
 const Store = require('./Store')
 
@@ -18,7 +19,7 @@ const store = new Store({
         password: '',
       }
     }
-  })
+})
   
 
 
@@ -54,20 +55,45 @@ function createMainWindow() {
     // mainWindow.loadURL(`file://${__dirname}/app/index.html`)
     mainWindow.loadFile('./app/index.html')
 
-
 }
 
 
 ipcMain.on('login:check', (event, options) => {
     // check permission 
-    console.log(options)
     axios.post('http://localhost:8000/api/login/', {
         email: options.email,
         password: options.password
     })
     .then((res) => {
         store.set('login', res.data.data)
+        global.GlobalUserData = {
+            userdata: res.data.data
+        }
         createNetworkWindow()
+        networkWindow.webContents.send('user:data', res.data.data);
+        mainWindow.close()
+
+    })
+    .catch((error) => {
+        console.error(error)
+    })
+
+    // Move to the another page.
+})
+
+
+
+ipcMain.on('logout:user', (event, options) => {
+    // check permission 
+    store.set('login', null)
+    axios.post('http://localhost:8000/api/logout/', {
+        status: 0,
+        user_id: 34,
+    })
+
+    .then((res) => {
+        console.log("logout")
+
     })
     .catch((error) => {
         console.error(error)
@@ -75,15 +101,20 @@ ipcMain.on('login:check', (event, options) => {
 
 
 
-    // Move to the another page.
+    if(store.get('login') === null){
+        createMainWindow()
+    }else{
+        createNetworkWindow()
+    }
+
+    networkWindow.close()
 })
 
 
 
 ipcMain.on('index:permission', (event, options) => {
     // Close current window 
-    console.log(store.get('login').fullname)
-    if(store.get('login').fullname === ''){
+    if(store.get('login') === null){
         createMainWindow()
     }else{
         createNetworkWindow()
