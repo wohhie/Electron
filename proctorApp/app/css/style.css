@@ -142,12 +142,6 @@ label, p, a, .btn, h1, h2, h3, h4, h5, h6{
 
 
 
-
-
-
-
-
-
 .navbar {
 	overflow: hidden;
 	background-color: #333;
@@ -162,15 +156,29 @@ label, p, a, .btn, h1, h2, h3, h4, h5, h6{
 	display: block;
 	color: #f2f2f2;
 	text-align: center;
-	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 17px;
 	border-radius: 0 !important;
+	padding: 12px;
+	text-align: center;
   }
   
   .navbar a:hover {
 	background: #f1f1f1;
 	color: black;
+  }
+
+  .nav-tabs li a {
+	  font-size: 15.9px;
+  }
+  
+  @media screen and (max-width: 500px) {
+	.navbar a {
+	  float: none;
+	  display: block;
+	  width: 100%;
+	  text-align: left;
+	}
   }
   
   .navbar a.active {
