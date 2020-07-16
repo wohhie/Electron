@@ -19,38 +19,38 @@ document.getElementById('comp-name').innerText = os.hostname()
 const osType = os.type()
 
 
-setInterval(function() {
+// setTimeout(function() {
 
-    const osTypeT = document.getElementById('os').innerHTML
-    const hostName = document.getElementById('comp-name').innerHTML
-    var   publicIP = document.getElementById('public-ip').innerHTML
-    const privateIP = document.getElementById('private-ip').innerHTML
-    var   vpn_ip = document.getElementById('openvpn-ip').innerHTML
-    const gatewayIP = document.getElementById('getway-ip').innerHTML
-    const activeInterface = document.getElementById('active-interface').innerHTML
-    const mac_address = document.getElementById('mac-address').innerHTML
+//     const osTypeT = document.getElementById('os').innerHTML
+//     const hostName = document.getElementById('comp-name').innerHTML
+//     var   publicIP = document.getElementById('public-ip').innerHTML
+//     const privateIP = document.getElementById('private-ip').innerHTML
+//     var   vpn_ip = document.getElementById('openvpn-ip').innerHTML
+//     const gatewayIP = document.getElementById('getway-ip').innerHTML
+//     const activeInterface = document.getElementById('active-interface').innerHTML
+//     const mac_address = document.getElementById('mac-address').innerHTML
 
 
-    axios.post('http://localhost:8000/api/network_interfaces/', {
-        pc_name: hostName,
-        os_type: osTypeT,
-        public_ip: publicIP,
-        private_ip: privateIP,
-        vpn_ip: vpn_ip,
-        gateway_ip: gatewayIP,
-        active_interface: activeInterface,
-        mac_address: mac_address,
-        user_id: 1
-    })
-    .then((res) => {
-        console.log(res)
-    })
-    .catch((error) => {
-        console.error(error)
-    })
+//     axios.post('http://localhost:8000/api/network_interfaces/', {
+//         pc_name: hostName,
+//         os_type: osTypeT,
+//         public_ip: publicIP,
+//         private_ip: privateIP,
+//         vpn_ip: vpn_ip,
+//         gateway_ip: gatewayIP,
+//         active_interface: activeInterface,
+//         mac_address: mac_address,
+//         user_id: 1
+//     })
+//     .then((res) => {
+//         console.log(res)
+//     })
+//     .catch((error) => {
+//         console.error(error)
+//     })
 
     
-}, 6000);
+// }, 6000);
 
 
 
@@ -128,9 +128,43 @@ setInterval(function() {
                 var ip_address = (list[prop].ip_address != undefined) ? list[prop].ip_address : ''
                 if(ip_address.includes("10.8.")){    
                     document.getElementById("openvpn-ip").innerText = ip_address
+
+
+
+
+                    const osTypeT = document.getElementById('os').innerHTML
+                    const hostName = document.getElementById('comp-name').innerHTML
+                    var   publicIP = document.getElementById('public-ip').innerHTML
+                    const privateIP = document.getElementById('private-ip').innerHTML
+                    var   vpn_ip = document.getElementById('openvpn-ip').innerHTML
+                    const gatewayIP = document.getElementById('getway-ip').innerHTML
+                    const activeInterface = document.getElementById('active-interface').innerHTML
+                    const mac_address = document.getElementById('mac-address').innerHTML
+
+
+                    axios.post('http://localhost:8000/api/network_interfaces/', {
+                        pc_name: hostName,
+                        os_type: osTypeT,
+                        public_ip: publicIP,
+                        private_ip: privateIP,
+                        vpn_ip: vpn_ip,
+                        gateway_ip: gatewayIP,
+                        active_interface: activeInterface,
+                        mac_address: mac_address,
+                        user_id: 34
+                    })
+                    .then((res) => {
+                        console.log(res)
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
                     break
                 }
             }
+
+
+            
         }else{
             document.getElementById("openvpn-ip").innerText = "VPN Disconnected"
         }
@@ -152,7 +186,7 @@ setInterval(function() {
 
 
 
-}, 4000);
+}, 10000);
 
 
 
